@@ -1,0 +1,102 @@
+\begin{problem}{그건 망고가 아니라 고양이예요}
+    {표준 입력(stdin)}{표준 출력(stdout)}
+    {3\,초}{1024\,MB}{}
+    
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{../pictures/mangomango.jpg}
+    %\captionsetup{labelformat=empty} % numbering error...? 'Fig' or '그림' missing
+    %\caption{고양이 `망고'}
+\end{wrapfigure}
+
+    망고는 이하의 집에 사는 고양이이다. 이름의 유래는 집에 있던 망고주스와 색깔이 유사해서이다. 망고는 이 이름을 마음에 들어하는지 모르겠다.
+    
+    삶은 힘들지만 고양이는 귀엽다. 그래서 몇몇 사람들은 망고를 칭송하기도 하며, `망고가 얼망고?' 같은 말장난을 하거나, `망고 맛있겠다' 같은 중의적인 농담을 펼치기도 한다. 이하는 망고가 망고라고 주장하지만 몇몇 사람들은 `그건 망고가 아니라 고양이예요'라 말하기에 이르었고, 어쩌다보니 여기에서 이하는 끊임없는 PS 문제 창작 욕구에 의해 다음과 같이 문제를 만들게 되었다.
+    
+    기본 문자열 $M_0$와 규칙 문자열 $S$가 있다고 하자. 이 때 양의 정수 $i$에 대해 $M_i$는 $S$에 있는 모든 \t{\$} 문자를 문자열 $M_{i-1}$로 대체한 문자열로 정의된다. 문자열이 길지 않다면 몇 개는 손으로 만들어볼 수도 있다. $M_0$를 `\texttt{그건 망고가 아니라 고양이예요}'라 하고, $S$를 `\texttt{그건 "\$"가 아니라 "\$"예요}'라 하면 $M_0$, $M_1$, $M_2$는 다음과 같다.
+    
+    \begin{itemize}
+        \item $M_0$ : \texttt{그건 망고가 아니라 고양이예요}
+        \item $M_1$ : \texttt{그건 "그건 망고가 아니라 고양이예요"가 아니라 "그건 망고가 아니라 고양이예요"예요}
+        \item $M_2$ : \texttt{그건 "그건 "그건 망고가 아니라 고양이예요"가 아니라 "그건 망고가 아니라 고양이예요"예요"가 아니라 "그건 "그건 망고가 아니라 고양이예요"가 아니라 "그건 망고가 아니라 고양이예요"예요"예요}
+    \end{itemize}
+    
+    $M_3$, $M_4$뿐만 아니라 $M_{1\ 000}$도 똑같은 원리로 만들어낼 수 있다. 그러나 문자열의 길이가 너무 길어질 수 있기 때문에 일반적으로는 전체를 만들 수는 없다. 그러나 꼭 전체를 구할 필요는 없지 않은가? 이하는 이렇게 생성되는 문자열의 연속한 부분을 구해보고자 한다.
+
+    \InputFile
+    첫 번째 줄에는 기본 문자열 $M_0$가, 두 번째 줄에는 규칙 문자열 $S$가 주어진다. 입력으로 들어오는 문자열은 다음 조건을 만족한다.
+    
+    \begin{itemize}
+        \item 각 문자열의 길이는 $1$ 이상 $10^5$ 이하이다.
+        \item 각 문자열의 모든 문자는 줄바꿈을 제외하고 ASCII code 값이 33 이상 126 이하이다. 즉, 제어 문자(control character)가 아닌 출력 가능한 문자(printable character)로만 구성되어 있다.
+        \item $M_0$에는 \t{\$} (ASCII code 36) 문자가 없다.
+        \item $S$에는 \t{\$} (ASCII code 36) 문자가 최소 하나 있다.
+    \end{itemize}
+    
+    세 번째 줄에는 두 개의 양의 정수 $k$와 $Q$가 공백으로 구분되어 주어진다. ($1 \leq k \leq 10^5$, $1 \leq Q \leq 10^5$)
+    
+    네 번째 줄부터 $Q$개의 줄에 걸쳐 질의가 주어진다. 이 $Q$개의 줄 중 $i$번째 줄에는 두 개의 정수 $a_i$와 $b_i$가 공백으로 구분되어 주어진다. ($1 \leq a_i \leq b_i \leq 10^{18}$, $b_i - a_i < 10^5$)
+    
+    $b_i$는 $M_k$의 길이를 초과하지 않으며, $b_i - a_i + 1$의 합은 $5 \times 10^5$을 넘지 않는다.
+    
+    \OutputFile
+    $ Q $개의 줄에 걸쳐 $M_k$의 부분문자열을 출력한다.
+    
+    이 중 $i$번째 줄에는 $M_k$의 $a_i$번째 글자부터 $b_i$번째 글자까지, 총 $b_i-a_i+1$개의 문자를 출력한다.
+    
+    \Examples
+    \begin{example}
+        \exmp{
+            It's\_a\_cat,\_not\_a\_mango
+            It's\_"\textdollar{}"{},\_not\_"\textdollar{}"
+            1 6
+            1 20
+            18 35
+            49 61
+            29 40
+            41 50
+            5 5
+        }{%
+            It's\_"It's\_a\_cat,\_no
+            \_not\_a\_mango"{},\_not
+            \_not\_a\_mango"
+            o"{},\_not\_"It'
+            s\_a\_cat,\_n
+            \_
+        }%
+        \exmp{
+            Ad\_finitum
+            \$
+            100000 4
+            1 10
+            1 2
+            4 10
+            5 8
+        }{%
+            Ad\_finitum
+            Ad
+            finitum
+            init
+        }%
+    \end{example}
+    
+    \begin{examplewide}
+        \exmp{
+            THE\_END
+            \$\_IS\_NEVER\_\$\_IS\_NEVER\_\$
+            88 5
+            1 7
+            3256 3257
+            67706 67710
+            111011 111017
+            999999999999999968 999999999999999993
+        }{%
+            THE\_END
+            IS
+            NEVER
+            THE\_END
+            \_THE\_END\_IS\_NEVER\_THE\_END\_
+        }%
+    \end{examplewide}
+\end{problem}
+

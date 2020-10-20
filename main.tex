@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper,oneside,dvipsnames]{article}
+
+\usepackage[english,russian]{babel}
+\usepackage{olymp}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color} % for colored text
+\usepackage{import} % for changing current dir
+\usepackage{epigraph}
+% \usepackage{daytime} % for displaying version number and date
+\usepackage{wrapfig} % for having text alongside pictures
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage[figurename=그림]{caption} % caption name
+\usepackage{subcaption}
+\def\NoInputFileName{}
+\def\NoOutputFileName{}
+
+\intentionallyblankpagestrue
+
+\newcommand{\importproblem}[1]{\import{problems/#1/statement/}{./#1.tex}}
+
+\contest
+{UCPC 2020}%
+{Finals}%
+{August 1st, 2020}%
+
+\binoppenalty=10000
+\relpenalty=10000
+\exhyphenpenalty=10000
+
+\begin{document}
+
+\BuildContestTitle
+
+\raggedbottom
+
+\begin{center}
+    \textbf{\Large\textsf{문제 목록}}
+\end{center}
+
+문제지에 있는 문제가 총 12문제가 맞는지 확인하시기 바랍니다.
+
+\begin{center}
+    \begin{minipage}{0.35\textwidth}
+        \begin{itemize}
+            \item[\textbf{A}] 전단지 돌리기
+            \item[\textbf{B}] 던전 지도
+            \item[\textbf{C}] 함수 복원
+            \item[\textbf{D}] 소가 길을 건너간 이유 2020
+            \item[\textbf{E}] 지도 설치
+            \item[\textbf{F}] 애완 트리
+            \item[\textbf{G}] 그건 망고가 아니라 고양이예요
+            \item[\textbf{H}] 레이저 연구소
+            \item[\textbf{I}] 빛의 전사 크리퓨어
+            \item[\textbf{J}] 관광 사업
+            \item[\textbf{K}] 데이터 제작
+            \item[\textbf{L}] 피자 배틀
+        \end{itemize}    
+    \end{minipage}
+\end{center}
+
+모든 문제의 메모리 제한은 1GB로 동일합니다.
+\newpage
+
+%\importproblem{sample}
+\importproblem{driving-leaflet} % A
+\importproblem{dungeon-map} % B
+\importproblem{function-restore} % C
+%\importproblem{demarcation} % C
+\importproblem{cowfly} % D
+\importproblem{maps} % E
+\importproblem{pet-tree} % F
+\importproblem{mango} % G
+\importproblem{laser-lab} % H
+\importproblem{bitkriii} % I
+\importproblem{tour} % J
+\importproblem{v-e-f} % K
+\importproblem{pizza-battle} % L
+
+\end{document}
